@@ -7,7 +7,7 @@ import math
 from PIL import Image
 import shutil
 import logging
-
+import cairosvg
 
 class WheelSpinner:
     def __init__(self, options: list = None):
@@ -53,6 +53,20 @@ class WheelSpinner:
     def get_color(self):
         self.colors_set = (self.colors_set + 1) % len(self.colors)
         return self.colors[self.colors_set]
+
+    def convert_svg(self):
+        svg = self.return_svg()
+        cairosvg.svg
+
+    def save_gif(self):
+        fh = io.BytesIO()
+        self.animation.as_mp4(fh, fps=10, duration=5, verbose=True)
+
+
+        # fh = io.StringIO()
+        # fh.write(frames[:-1][0].svg)
+        fh.seek(0)
+        return fh
 
     def return_gif(self, driver=None):
         logging.info('Generating gif')

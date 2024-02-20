@@ -100,6 +100,12 @@ class CommandHandler:
         file = wheel.return_gif(self.driver)
         return self.get_message(), file
 
+    def fast(self, options):
+        opts_list = [opt for opt in options.split(',')]
+        wheel = WheelSpinner.WheelSpinner(opts_list)
+        file = wheel.save_gif()
+        return self.get_message(), file
+
     def stablediffusion(self, prompt):
         client = webuiapi.WebUIApi(host='192.168.1.125')
 
